@@ -14,7 +14,7 @@ export default function Login() {
       return;
     }
 
-    await api.post("/auth/login", { username, password });
+    await api.post("/auth/login", { username, password }, {withCredentials:true});
     navigate("/todos");
   };
 
