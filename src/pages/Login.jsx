@@ -1,10 +1,12 @@
 
 import React, { useState } from "react";
 import api from "../api";
+import { useNavigate } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const navigate=useNavigate();
 
   const login = async () => {
     if (!username || !password) {
@@ -13,7 +15,7 @@ export default function Login() {
     }
 
     await api.post("/auth/login", { username, password });
-    window.location = "/todos";
+    navigate("/todos");
   };
 
   return (
